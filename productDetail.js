@@ -1,15 +1,25 @@
 const productPrice = parseInt(
   document.querySelector(".productPrice").innerHTML
-);
+); // 색상,
 
 const productQuantityInput = document.querySelector(".productQuantityInput");
+const totalPrice = document.querySelector(".totalPrice");
+const cartSubmit = document.querySelector(".cartSubmit");
 
-const productPurchaseButton = document.querySelector(".productPurchaseButton");
+const colorOptionBtn = document.querySelector(".colorOptionBtn");
+const colorOptionList = document.querySelector(".colorOptionList");
 
-productPurchase = (e) => {
-  e.preventDefault();
-  let totalPrice = productPrice * parseInt(productQuantityInput.value);
-  alert(totalPrice);
+const updateTotalPrice = () => {
+  const quantity = parseInt(productQuantityInput.value) || 0;
+  const total = productPrice * quantity;
+  totalPrice.innerHTML = total;
 };
 
-productPurchaseButton.addEventListener("click", productPurchase);
+productQuantityInput.addEventListener("input", updateTotalPrice);
+cartSubmit.addEventListener("click", () => {
+  window.location.href = "./productCart.html";
+});
+
+colorOptionBtn.addEventListener("click", () => {
+  colorOptionList.classList.toggle("show");
+});
