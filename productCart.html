@@ -1,1 +1,70 @@
-<h1>장바구니</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>주문 내역</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      img {
+        max-width: 100px;
+        max-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>주문 내역</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>상품</th>
+          <th>수량</th>
+          <th>가격</th>
+          <th>합계</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img
+              src="https://via.placeholder.com/100x100.png?text=Product+Image"
+              alt="상품 이미지"
+            />
+            상품명
+          </td>
+          <td>1</td>
+          <td>10,000원</td>
+          <td>10,000원</td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              src="https://via.placeholder.com/100x100.png?text=Product+Image"
+              alt="상품 이미지"
+            />
+            상품명
+          </td>
+          <td>2</td>
+          <td>5,000원</td>
+          <td>10,000원</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">총합계</td>
+          <td>20,000원</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

@@ -3,20 +3,16 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.p-3 {
-  background-color: #a79192;
-}
-
-.container {
-  margin-top: 30px;
+.mainTitle {
+  font-size: 100px;
+  text-align: center;
 }
 
 .productDetail {
-  margin-top: 300px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  gap: 100px;
+  gap: 30px;
 }
 
 .productImage {
