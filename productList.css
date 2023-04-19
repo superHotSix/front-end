@@ -1,87 +1,41 @@
-main {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 3rem 3rem auto 3rem;
-    min-height: 100vh;
-}
-
-.main_nav_container{
-    grid-column: 1/10;
-    grid-row: 1;
-}
-.main_nav_header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 2px solid black;
-    height: 3rem;
-    position: sticky;
-    top: 0;
-}
-.main_nav_header > header{
-    width: 50%;
-    height: 2rem;
+.navbar-brand{
     font-size: 2rem;
-    font-weight: 800;
-    padding: 0.6rem;
+}
+.bi{
+    font-size: 1.5rem;
+}
+.category{
+    padding: 0.5rem;
+}
+.product{
+    padding-top: 2.5rem;
+}
+.main-nav{
+    background-color: #786364;
+}
+.sub-nav{
+    background-color: #A79192;
+}
+.dropdown{
+    margin-left: 10px;
+}
+.badge{
+    border: 1px red solid;
+    color: black;
+    border-radius: 25px;
+    font-size: 5px;
+    background: red;
+}
+.card > img{
+    filter: drop-shadow(3px 4px 4px);
 }
 
-.sub_nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 2px solid black;
-    height: 3rem;
-    position: sticky;
-    top: 0;
-}
-.sub_nav_header{
-    height: 2rem;
-    font-size: 2rem;
-    padding: 0.6rem;
-}
-.sub_nav > section{
-    padding: 1rem;
-}
-section{
-    grid-column: 1/10;
-    grid-row: 3;
-}
-section > div{
-    display: inline-block;
-    height: 2rem;
-    padding-left: 0.25rem;
-    padding-right: 1rem;
-}
-.fas{
-    padding: 8px;
-    font-size: 24px;
-    color: #333;
-}
+/* 
 
-.mian_product_list{
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    gap: 2rem;
-    padding: 3rem;
-}
+$color1: #F6E9E2;
+$color2: #CFC5C9;
+$color3: #A79192;
+$color4: #D2AEAD;
+$color5: #786364;
 
-.product_container{
-    width: 300px;
-    height: 350px;
-    /* border: 2px solid black; */
-}
-
-.product_container img {
-    width: 100%;
-    height: auto;
-    display: block;
-} 
-footer{
-    grid-row: 4;
-    font-size: 0.7rem;
-    text-align: center;
-    grid-column: 1/10;
-    padding: 1rem;
-    border-top: 2px solid;
-}
+*/
