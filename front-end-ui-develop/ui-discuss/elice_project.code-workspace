@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "../.."
+			"path": "../../.."
 		},
 		{
-			"path": "../../../mini project"
+			"path": "../../../../mini project/momentom"
 		}
 	],
 	"settings": {

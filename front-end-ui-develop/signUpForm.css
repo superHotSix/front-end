@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.p-3{
+    background-color: #A79192
+}
+
+.row{
+    margin-top: 10px;
+}
