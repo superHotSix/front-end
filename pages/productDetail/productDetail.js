@@ -32,7 +32,7 @@ cartSubmitBtn.addEventListener("click", function () {
   const queryString = `?image=${productImage}&name=${productName}&price=${productPrice}&quantity=${productQuantity}`;
 
   // 새로운 페이지로 이동
-  window.location.href = `productCart.html${queryString}`;
+  window.location.href = `../productCart/productCart.html${queryString}`;
 });
 
 colorOptionBtn.addEventListener("click", (event) => {

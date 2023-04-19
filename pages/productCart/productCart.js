@@ -13,7 +13,6 @@ const productRow = document.createElement("tr");
 const productImageCell = document.createElement("td");
 
 productImage.src = productImage;
-productImage.alt = "상품 이미지";
 productImageCell.appendChild(productImage);
 productImageCell.appendChild(document.createTextNode(productName));
 
