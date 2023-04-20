@@ -14,7 +14,7 @@ body {
   border: solid black 2px;
 }
 
-.userImg {
+.profileContainer > .userImg {
   display: flex;
   justify-content: center;
 }
@@ -111,4 +111,68 @@ body {
 .sampleContact:hover {
   width: 60%;
   height: 60%;
+}
+
+.userInfoForm {
+  padding: 30px;
+}
+
+.userImg,
+.userName,
+.userEmail,
+.userPassword,
+.userPhone,
+.userAddress {
+  padding: 30px;
+}
+
+table {
+  width: 100%;
+  padding: 5px;
+}
+th,
+td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+}
+img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+input[type="text"],
+input[type="password"] {
+  height: auto; /* 높이 초기화 */
+  padding: 0.8em 0.5em; /* 여백 설정 */
+  width: 100%;
+}
+input[type="number"] {
+  height: auto; /* 높이 초기화 */
+  line-height: normal; /* line-height 초기화 */
+  padding: 0.8em 0.5em; /* 여백 설정 */
+}
+
+.userInfoForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.saveBtn {
+  margin-top: 20px;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+
+  font-size: 30px;
+  font-weight: bold;
 }
