@@ -13,13 +13,17 @@
 .main-nav{
     background-color: #786364;
 }
+.login{
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .sub-nav{
     background-color: #A79192;
 }
 .dropdown{
     margin-left: 10px;
 }
-.badge{
+.cart-badge{
     border: 1px red solid;
     color: black;
     border-radius: 25px;
@@ -28,6 +32,18 @@
 }
 .card > img{
     filter: drop-shadow(3px 4px 4px);
+    width: 300px;
+    height: 330px;
+    transition: transform .8s;
+}
+
+.card > img:hover{
+    transform: scale(1.07);
+    width: 300px;
+    height: 330px;
+}
+.card .badge{
+    font-size: 5px;
 }
 
 /* 
