@@ -37,45 +37,21 @@ a.nav-link{
     left: 25px;
 }
 
-
-
-.sub-nav{
-    background-color: #A79192;
-    height: 3rem;
+.figure img{
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    height: 700px;
 }
-.dropdown{
-    margin-left: 10px;
-}
-
-
-
-.card > img{
-    filter: drop-shadow(3px 4px 4px);
-    width: 300px;
-    height: 330px;
-    transition: transform .8s;
-}
-
-.card > img:hover{
-    transform: scale(1.07);
-    width: 300px;
-    height: 330px;
-}
-.card .badge{
-    font-size: 5px;
-}
-
-.more-btn{
+.figure-caption{
+    top: 3%;
+    left: 5%;
+    font-size: 2rem;
     color: #fff;
-    background-color: #786364;
 }
-
-
-/* {
-color : #F6E9E2;
-color : #CFC5C9;
-color : #A79192;
-color : #D2AEAD;
-color : #786364;
-} */
-
+.figure-shop{
+    top: 5%;
+    left: 90%;
+    font-size: 1rem;
+    color: #fff;
+}

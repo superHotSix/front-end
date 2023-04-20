@@ -1,3 +1,6 @@
 *.png
 .DS_Store
 node_modules/
+product.json
+*.gif
+*.jpeg
