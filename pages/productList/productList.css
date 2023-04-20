@@ -14,6 +14,7 @@
     background-color: #786364;
 }
 .login{
+    background-color: #A79192;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -46,12 +47,17 @@
     font-size: 5px;
 }
 
-/* 
+.more-btn{
+    color: #fff;
+    background-color: #786364;
+}
 
-$color1: #F6E9E2;
-$color2: #CFC5C9;
-$color3: #A79192;
-$color4: #D2AEAD;
-$color5: #786364;
 
-*/
+/* {
+color : #F6E9E2;
+color : #CFC5C9;
+color : #A79192;
+color : #D2AEAD;
+color : #786364;
+} */
+
