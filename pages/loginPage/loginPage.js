@@ -50,7 +50,7 @@ function saveUserLocalStorage(savedUserInLocalStorage){
 let savedUser = localStorage.getItem("user");
 let savedUserObj = JSON.parse(savedUser)
 
-//로컬스토리지에 유저 이메일이 없을때(로그인이 성공하지 않았을때) - 기본 nonMember로 로컬스토리지 저장
+//로컬스토리지에 유저정보가 없을때 - 기본 nonMember로 로컬스토리지 저장
 if(savedUser === null){
 savedUserDataInLocalStorage()
 }
