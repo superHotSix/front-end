@@ -40,12 +40,12 @@ body {
 .cartSubmit,
 .productPurchaseButton,
 .totalPrice {
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.colorOptionBtn,
 .cartSubmit,
 .productPurchaseButton {
+  margin-top: 10px;
   background-color: #786364;
   border: #786364;
 }
@@ -60,4 +60,8 @@ footer {
 .review {
   flex: 1;
   margin: 0 10px;
+}
+
+.bg-custom {
+  background-color: #786364;
 }

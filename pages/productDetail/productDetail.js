@@ -9,6 +9,12 @@ const cartSubmitBtn = document.querySelector(".cartSubmit");
 const colorOptionBtn = document.querySelector(".colorOptionBtn");
 const dropdownMenu = document.querySelector(".dropdown-menu");
 
+// get from back-end
+const productImg = "img";
+const productName = "something";
+const productQuantity = 2;
+const rowPrice = (parseInt(productQuantityInput.value) || 0) * productPrice;
+
 // Event Listeners
 
 const updateTotalPrice = () => {
@@ -20,19 +26,18 @@ const updateTotalPrice = () => {
 productQuantityInput.addEventListener("input", updateTotalPrice);
 
 cartSubmitBtn.addEventListener("click", function () {
-  // 선택된 상품 정보 가져오기
-  const productImage = document
-    .querySelector(".productImage")
-    .getAttribute("src");
-  const productName = document.querySelector(".productName").textContent;
-  const productPrice = document.querySelector(".productPrice").textContent;
-  const productQuantity = document.querySelector(".productQuantityInput").value;
+  const product = {
+    productImg: productImg,
+    productName: productName,
+    productQuantity: productQuantity,
+    productPrice: rowPrice,
+  };
 
-  // 쿼리 스트링 생성
-  const queryString = `?image=${productImage}&name=${productName}&price=${productPrice}&quantity=${productQuantity}`;
+  const productString = JSON.stringify(product);
 
-  // 새로운 페이지로 이동
-  window.location.href = `../productCart/productCart.html${queryString}`;
+  localStorage.setItem("product", productString);
+
+  window.location.href = "../productCart/productCart.html";
 });
 
 colorOptionBtn.addEventListener("click", (event) => {
