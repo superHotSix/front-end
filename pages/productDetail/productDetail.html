@@ -12,57 +12,7 @@
     <link rel="stylesheet" href="productDetail.css" />
     <title>Document</title>
   </head>
-  <body>
-    <header class="p-3">
-      <div class="container">
-        <div
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-        >
-          <a
-            href="/"
-            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-          >
-            <svg
-              class="bi me-2"
-              width="40"
-              height="32"
-              role="img"
-              aria-label="Bootstrap"
-            >
-              <use xlink:href="#bootstrap" />
-            </svg>
-          </a>
-
-          <ul
-            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-          >
-            <li>
-              <a href="#" class="nav-link px-2 text-white"><h1>Hot Six</h1></a>
-            </li>
-            <li><a href="#" class="nav-link px-2 text-dark">장바구니</a></li>
-            <li><a href="#" class="nav-link px-2 text-dark">마이페이지</a></li>
-          </ul>
-
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input
-              type="search"
-              class="form-control form-control-dark"
-              id="searchInput"
-              placeholder="상품찾기"
-              aria-label="Search"
-            />
-          </form>
-
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">
-              Login
-            </button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
-          </div>
-        </div>
-      </div>
-    </header>
-
+  <body class="container">
     <main>
       <div class="productDetail">
         <img class="productImage" src="../../test.png" />
@@ -70,35 +20,44 @@
           <div class="productName">Something</div>
           <div class="productPrice">30000</div>
           <div class="productQuantity">
-            개수 <input class="productQuantityInput" type="number" />
+            <!-- 개수 <input class="productQuantityInput" type="number" /> -->
+            개수
+            <input
+              type="number"
+              class="form-control productQuantityInput"
+              placeholder="10개 이하로 가능"
+              min="1"
+              max="10"
+              value="1"
+            />
           </div>
-          <div class="colorOption">
-            <button
-              class="colorOptionBtn btn btn-primary d-inline-flex align-items-center"
+          <div class="dropdown">
+            <a
+              class="btn btn-secondary dropdown-toggle bg-custom"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
             >
-              색상 선택
-            </button>
-            <!-- <ul
-              class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px"
-              data-bs-theme="dark"
-            >
-              <li><a href="#">red</a></li>
-              <li><a href="#">blue</a></li>
-              <li><a href="#">yellow</a></li>
-              <li><a href="#">green</a></li>
-            </ul> -->
+              색상 보기
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">빨간색</a></li>
+              <li><a class="dropdown-item" href="#">파란색</a></li>
+              <li><a class="dropdown-item" href="#">노란색</a></li>
+            </ul>
           </div>
-          <button
-            class="cartSubmit btn btn-primary d-inline-flex align-items-center"
-          >
+          <button class="cartSubmit btn btn-primary align-items-center">
             장바구니
           </button>
           <button
-            class="productPurchaseButton btn btn-primary d-inline-flex align-items-center"
+            class="productPurchaseButton btn btn-primary align-items-center"
           >
             구매하기
           </button>
-          <div class="totalPrice">총 금액: 0 원</div>
+          <div class="totalPrice">총 금액: 30000 원</div>
         </div>
       </div>
     </main>

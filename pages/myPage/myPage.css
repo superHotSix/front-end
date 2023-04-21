@@ -4,6 +4,10 @@ body {
   font-weight: bold;
 }
 
+.backgroundColor {
+  color: #fcefca;
+}
+
 .profileContainer {
   display: grid;
   grid-template-areas: "userImg userWelcome";
@@ -11,7 +15,6 @@ body {
   grid-template-rows: 15rem;
 
   align-items: center;
-  border: solid black 2px;
 }
 
 .profileContainer > .userImg {
@@ -21,13 +24,8 @@ body {
 
 .userImgSvg {
   grid-area: userImg;
-  width: 30%;
-  height: 30%;
-}
-
-.userWelcome {
-  grid-area: userWelcome;
-  font-size: 2rem;
+  width: 50%;
+  height: 50%;
 }
 
 .optionContainer {
@@ -35,8 +33,6 @@ body {
   grid-template-areas: "userInfo userCart contact";
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 30rem;
-
-  border: solid black 2px;
 }
 
 .userInfo {
@@ -115,6 +111,7 @@ body {
 
 .userInfoForm {
   padding: 30px;
+  display: none;
 }
 
 .userImg,
@@ -126,48 +123,16 @@ body {
   padding: 30px;
 }
 
-table {
-  width: 100%;
-  padding: 5px;
-}
-th,
-td {
-  text-align: center;
-  padding: 8px;
-  border: 1px solid #ddd;
-}
-th {
-  background-color: #f2f2f2;
-}
-img {
-  max-width: 100px;
-  max-height: 100px;
-}
-
-input[type="text"],
-input[type="password"] {
-  height: auto; /* 높이 초기화 */
-  padding: 0.8em 0.5em; /* 여백 설정 */
-  width: 100%;
-}
-input[type="number"] {
-  height: auto; /* 높이 초기화 */
-  line-height: normal; /* line-height 초기화 */
-  padding: 0.8em 0.5em; /* 여백 설정 */
-}
-
-.userInfoForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .saveBtn {
   margin-top: 20px;
 }
 
+.userCartForm {
+  display: none;
+}
+
 #contact {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
