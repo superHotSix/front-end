@@ -12,30 +12,79 @@
 }
 .main-nav{
     background-color: #786364;
+    height: 3rem;
 }
-.sub-nav{
+a.nav-link{
+    padding: 0;
+}
+
+.user-nav {
+    height: 2rem;
+}
+
+.login{
     background-color: #A79192;
-}
-.dropdown{
     margin-left: 10px;
+    margin-right: 10px;
 }
-.badge{
+.cart-badge{
     border: 1px red solid;
     color: black;
     border-radius: 25px;
     font-size: 5px;
     background: red;
+    top: -5px;
+    left: 25px;
 }
+
+
+
+.sub-nav{
+    background-color: #A79192;
+    height: 3rem;
+}
+.dropdown{
+    margin-left: 10px;
+}
+
+
+
 .card > img{
     filter: drop-shadow(3px 4px 4px);
+    width: 300px;
+    height: 330px;
+    transition: transform .8s;
 }
 
-/* 
+.card > img:hover{
+    transform: scale(1.07);
+    width: 300px;
+    height: 330px;
+}
+.card .badge{
+    font-size: 5px;
+}
+/* 제품 컨셉별 뱃지 배경 색 */
+.warm{
+    background-color: darkgoldenrod !important;
+}
+.calm{
+    background-color: #786364 !important;
+}
+.cool{
+    background-color: aqua !important;
+}
+.more-btn{
+    color: #fff;
+    background-color: #786364;
+}
 
-$color1: #F6E9E2;
-$color2: #CFC5C9;
-$color3: #A79192;
-$color4: #D2AEAD;
-$color5: #786364;
 
-*/
+/* {
+color : #F6E9E2;
+color : #CFC5C9;
+color : #A79192;
+color : #D2AEAD;
+color : #786364;
+} */
+
