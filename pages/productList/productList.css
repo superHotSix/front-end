@@ -64,7 +64,16 @@ a.nav-link{
 .card .badge{
     font-size: 5px;
 }
-
+/* 제품 컨셉별 뱃지 배경 색 */
+.warm{
+    background-color: darkgoldenrod !important;
+}
+.calm{
+    background-color: #786364 !important;
+}
+.cool{
+    background-color: aqua !important;
+}
 .more-btn{
     color: #fff;
     background-color: #786364;
