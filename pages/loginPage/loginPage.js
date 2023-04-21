@@ -7,41 +7,64 @@ const SingUpBtn = document.getElementById("btn4")
 const appleLoginBtn = document.getElementById("btn5")
 const searchInput = document.getElementById("searchInput")
 
-const userEmail = idInput.value;
-const userPassword = passwordInput.value;
-
-const userData = {
-  userEmail,
-  userPassword
-}
-
-
 async function onLoinSubmit(e) {
     e.preventDefault
     
+    const userEmail = idInput.value;
+    const userPassword = passwordInput.value;
+
+    const userData = {
+      userEmail,
+      userPassword
+    }
+
     const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    //상품 json 받아왔을때, 받는거 실패했을때 나눠어서 error처리 추가
+    //json 받아왔을때, 받는거 실패했을때 나눠어서 error처리 추가
     const users = await response.json();
-    const rightUser = users.filter((user) => user.userEmail === userData.userEmail)
+    const rightUser = users.filter((user) => user.email === userData.userEmail)
     
-    if(rightUser.userEmail && rightUser[0].userPassword === userData.userPassword){
-      alert("로그인에 성공하였습니다!")
-      
-      saveUserLocalStorage()//local storage 유저 아이디 저장 
-      history.back()  //이전 페이지 이동
+    if(rightUser[0] && rightUser[0].name === userData.userPassword){
+    alert("로그인에 성공하였습니다.")
+    localStorage.removeItem("user")
+
+    const savedUserInLocalStorage = {
+      userEmail : `${rightUser[0].email}`,
+      userType : "member"
+    }
+
+    saveUserLocalStorage(savedUserInLocalStorage)
     
-    } else {  
-      alert("아이디 또는 비밀번호가 일치하지 않습니다.")
-      }
+    }else if(rightUser[0] && rightUser[0].name !== userData.userPassword){
+      alert("비밀번호가 일치 하지 않습니다.")
+    }else{
+      alert("아이디가 일치 하지 않습니다.")
+    }
    }
 
 
 //local storage 유저 아이디 저장 
-function saveUserLocalStorage(){
-  localStorage.setItem("userEmail", userData.userEmail)
+function saveUserLocalStorage(savedUserInLocalStorage){
+  localStorage.setItem("user", JSON.stringify(savedUserInLocalStorage))
  }
   
-const savedUser = localStorage.getItem("userEmail");
+let savedUser = localStorage.getItem("user");
+let savedUserObj = JSON.parse(savedUser)
+
+//로컬스토리지에 유저 이메일이 없을때(로그인이 성공하지 않았을때) - 기본 nonMember로 로컬스토리지 저장
+if(savedUser === null){
+savedUserDataInLocalStorage()
+}
+
+function savedUserDataInLocalStorage(){
+  const savedUserInLocalStorage = {
+    userType : "nonMember"
+  }
+  
+  localStorage.setItem("user", JSON.stringify(savedUserInLocalStorage))
+  }
+
+
+
 
 function savedUserCheck(){
   if(savedUser === null){
