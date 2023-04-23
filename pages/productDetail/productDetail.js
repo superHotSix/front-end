@@ -31,7 +31,7 @@ cartSubmitBtn.addEventListener("click", function () {
     productName: productName,
     productQuantity: productQuantity,
     productPrice: rowPrice,
-  };
+  }; // 객체를 만들지 말고 배열로 진행하는 방법으로 로직 구현
 
   const productString = JSON.stringify(product);
 

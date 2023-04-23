@@ -15,13 +15,34 @@ const userPasswordInput = document.querySelector("#userPassword");
 const userAddressInput = document.querySelector("#userAddress");
 const userPhoneInput = document.querySelector("#userPhoneInput");
 
-// user 정보 (데이터베이스로(백엔드)부터 받아오는 값)
+// Mock-Up Data
+// const userName = "김종운";
+// const userEmail = "cdd@kakao.com";
+// const userPassword = "eliceFighting";
+// const userPhone = "010-1234-1234";
+// const userAddress = "부산시 광안대교";
 
-const userName = "김종운";
-const userEmail = "cdd@kakao.com";
-const userPassword = "eliceFighting";
-const userPhone = "010-1234-1234";
-const userAddress = "부산시 광안대교";
+// GET 요청을 통해 URL 접근시 곧바로 백엔드로부터 받아오는 기존 데이터 값
+// 이때 장바구니 같은 경우 로컬스토리지에서 가져오는 것이 좋을 것 같음
+// 혹은 마이페이지 옵션들을 각각 라우팅 처리하여 여러 POST 요청을 할 수 있도록 해야 할 것 같음
+fetch("/myPage")
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Network response was not ok");
+    }
+  })
+  .then((data) => {
+    data.userName = userNameInput.value;
+    data.userEmail = userEmailInput.value;
+    data.userPassword = userPasswordInput.value;
+    data.userAddress = userAddressInput.value;
+    data.userPhone = userPhoneInput.value;
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 
 userInfo.addEventListener("click", (e) => {
   e.preventDefault();
@@ -65,7 +86,31 @@ userPhoneInput.addEventListener("input", function () {
   }
 });
 
-saveBtn.addEventListener("click", () => {
-  alert("저장이 완료되었습니다!");
-  // DB 저장 관련 메서드, 함수
-});
+async function saveInfo() {
+  const saveInfo = {
+    userName: userNameInput.value,
+    userEmail: userEmailInput.value,
+    userPassword: userPasswordInput.value,
+    userAddress: userAddressInput.value,
+    userPhone: userPhoneInput.value,
+  };
+  fetch("/myPage", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(saveInfo),
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("저장이 완료되었습니다");
+      } else {
+        throw new Error("Network response was not ok");
+      }
+    })
+    .then(() => {
+      alert("저장 성공 !");
+    });
+} // SAVE Button을 눌렀을 때, Json 형식으로 백엔드에 데이터들을 보내줌, POST 방식
+
+saveBtn.addEventListener("click", saveInfo);
