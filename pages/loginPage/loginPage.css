@@ -153,8 +153,7 @@ ul {
     height: 25px;
 }
 
-#btn3 img{
-    width: auto; height: auto;
+#btn3 svg{
     width: 25px;
     height: 25px;
     background-size: contain;

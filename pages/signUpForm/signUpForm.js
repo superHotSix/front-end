@@ -10,7 +10,8 @@ const addressInput = document.getElemenyById("address")
 const address2Input = document.getElemenyById("address2")
 const button = document.getElementById("submitButton")
 
-const API = `https://${window.location.hostname}:8190/api/register`
+const SIGNUP_API = `/signUp`
+const LOGIN_API="/login"
 
 
 
@@ -24,7 +25,9 @@ const userPasswordConfirmInput = passwordConfirmInput.value
 const userAddress = addressInput.value + address2Input.value
 
 
-
+if(userPassword.length > 8){
+    alert('비밀번호는 8자 이상되어야 합니다.')
+}
 if(userPassword != userPasswordConfirmInput){
     alert('비밀번호가 일치하지 않습니다.')
 }
@@ -38,7 +41,7 @@ const newUserData = {
 
 const dataJson = JSON.stringify(newUserData)
 
-const res = await fetch(API, {
+const res = await fetch(SIGNUP_API, {
     method: 'POST',
     headers:{
          'Content-Type': 'application/json',
@@ -46,13 +49,20 @@ const res = await fetch(API, {
     body: dataJson
 })
 
-if(res.status === 201){
-    alert('회원가입에 성공하였습니다!')
-    location.replace("로그인페이지")
-}else{
-    alert('회원가입에 실패하였습니다.')
-}
 
+try {
+    const response = await fetch(LOGIN_API);
+    if (!response.ok) {
+      alert('회원가입에 실패하였습니다.')
+      throw new Error("err");
+    }
+    alert('회원가입에 성공하였습니다!')
+    window.location.href = LOGIN_API;
+    const html = await response.text();
+    document.documentElement.innerHTML = html;
+  } catch (e) {
+    console.log(e);
+  }
 
 
 }
