@@ -1,23 +1,28 @@
 
-const productRow = document.querySelector('.product-li'); // 상품목록 HTML 추적
+let productRow = document.querySelector('.product-li'); // 상품목록 HTML 
+const lowerBtn = document.querySelector('.lower-price');
+const higherBtn = document.querySelector('.higher-price');
+const nomalUrl = '../product.json'
 let obj = null; // 상품목록 init
-let start = 1; // 상품목록 탐색을위한 초기값 상수
+let start = 1; // 상품목록 탐색을위한 페이지 상수
 const limit = 8; // 한페이지에 표시할 상품목록 갯수 상수
 
 
-fetchProducts();
-
+fetchProducts('nomalurl');
 
 
 
 // 서버에서 상품목록 받아오기
 
-function fetchProducts() {
+function fetchProducts(url) {
     fetch('../product.json')
     .then(response => response.json())
     .then(data => {
         obj = data
+        console.log(obj)
+        renderBySort();
         render(start, limit)
+        createToast();
     })
 }
 
@@ -27,12 +32,12 @@ function render() {
     const startIdx = (start - 1) * limit;
     const endIdx = startIdx + limit;
 
-    for (let i = startIdx; i < Math.min(endIdx, obj.products.length) ; i++){
-        const product = obj.products
+    for (let i = startIdx; i < Math.min(endIdx, obj.length) ; i++){
+        const product = obj
         const productEl = creatProductEl(product[i])
         productRow.appendChild(productEl);
     }
-    if (endIdx < obj.products.length) {
+    if (endIdx < obj.length) {
         if(start !== 1)removeBtn();
         moreBtnRender();
     }
@@ -42,8 +47,9 @@ function render() {
 function onloadMore() {
     start++;
     render();
+    createToast();
     const endIdx = start * limit
-    if(endIdx >= obj.products.length) removeBtn()
+    if(endIdx >= obj.length) removeBtn()
 }
 
 // productHTML 생성 함수
@@ -52,13 +58,13 @@ function creatProductEl(product) {
     productEl.className = 'col-md-3';
     productEl.innerHTML =`
     <div class="card border-0">
-      <img src="../img/${product.thumnailImg}" class="card-img-top" alt="...">
+      <img src="${product.thumnailImg}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${product.productName}
           <span class="badge rounded-pill ${product.concept}">${product.concept}</span>
         </h5>
         <p class="card-text d-flex justify-content-between align-items-end">₩ ${product.productPrice}
-          <a class="nav-link" href="#"><i class="bi bi-cart3"></i></a>
+          <i class="bi bi-cart3 add-cart"></i>
         </p>
       </div>
     </div>
@@ -71,7 +77,7 @@ function moreBtnRender(start, limit) {
     const morebtnEl = document.createElement('div');
     morebtnEl.className = 'row more-btn-row';
     const morebtnEl_div = document.createElement('div');
-    morebtnEl_div.className = 'col-12 text-center mt-5';
+    morebtnEl_div.className = 'col-12 text-center mb-5';
     morebtnEl.appendChild(morebtnEl_div);
     const morebtnEl_div_btn = document.createElement('button');
     morebtnEl_div_btn.className = 'btn more-btn';
@@ -88,3 +94,47 @@ function removeBtn() {
     document.querySelector('.more-btn-row').remove()
 }
 
+
+
+
+//concept버튼부분 
+
+const conceptBtn = document.querySelector('.concept-div')
+
+conceptBtn.addEventListener('mouseon', () => {
+    
+})
+
+
+//상품 정렬 
+
+function sortByHighPrice() {
+    obj.sort((a, b) => parseFloat(b.productPrice.replace('$', '')) - parseFloat(a.productPrice.replace('$', '')));
+    start = 1;
+    productRow.innerHTML = "";
+    render(start, limit);
+};
+  
+function sortByLowPrice() {
+    obj.sort((a, b) => parseFloat(a.productPrice.replace('$', '')) - parseFloat(b.productPrice.replace('$', '')));
+    start = 1;
+    productRow.innerHTML = "";
+    render(start, limit);
+};
+
+function renderBySort() {
+    lowerBtn.addEventListener('click', sortByLowPrice);
+    higherBtn.addEventListener('click', sortByHighPrice);
+}
+
+
+
+function createToast() {
+    document.querySelectorAll('.add-cart').forEach(e => {
+        e.addEventListener('click', (e) => {
+            const toastLiveExample = document.querySelector('.toast')
+            const toast = new bootstrap.Toast(toastLiveExample)
+            toast.show()
+        });
+    })
+}
