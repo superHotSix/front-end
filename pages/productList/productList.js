@@ -8,14 +8,14 @@ let start = 1; // 상품목록 탐색을위한 페이지 상수
 const limit = 8; // 한페이지에 표시할 상품목록 갯수 상수
 
 
-fetchProducts('nomalurl');
+fetchProducts(nomalUrl);
 
 
 
 // 서버에서 상품목록 받아오기
 
 function fetchProducts(url) {
-    fetch('../product.json')
+    fetch(url)
     .then(response => response.json())
     .then(data => {
         obj = data
@@ -23,6 +23,7 @@ function fetchProducts(url) {
         renderBySort();
         render(start, limit)
         createToast();
+        sortByconcept();
     })
 }
 
@@ -99,11 +100,30 @@ function removeBtn() {
 
 //concept버튼부분 
 
-const conceptBtn = document.querySelector('.concept-div')
+const conceptBtn = document.querySelectorAll('.concept-div');
+const wramBtn = document.querySelector('.w-c');
+const vintageBtn = document.querySelector('.v-m');
+const calmBtn = document.querySelector('.c-e');
 
-conceptBtn.addEventListener('mouseon', () => {
+function sortByconcept() {
+    wramBtn.addEventListener('click', () => {
+        switch (wramBtn) {
+            case wramBtn:
+                let warmurl = '../warmcoolList.json'
+                start = 1;
+                productRow.innerHTML = '';
+                wramBtn.style.filter = `grayscale(${0})` // toggle 방식으로 구현하는게 나을듯 
+                fetchProducts(warmurl);
+                renderBySort();
+                createToast();
+                break;
+
+            case vintageBtn:
+                break;
+        }
+    })
     
-})
+}
 
 
 //상품 정렬 
@@ -113,6 +133,7 @@ function sortByHighPrice() {
     start = 1;
     productRow.innerHTML = "";
     render(start, limit);
+    createToast();
 };
   
 function sortByLowPrice() {
@@ -120,6 +141,7 @@ function sortByLowPrice() {
     start = 1;
     productRow.innerHTML = "";
     render(start, limit);
+    createToast();
 };
 
 function renderBySort() {
@@ -129,12 +151,14 @@ function renderBySort() {
 
 
 
+//장바구니 토스트 생성 함수
+
 function createToast() {
     document.querySelectorAll('.add-cart').forEach(e => {
         e.addEventListener('click', (e) => {
-            const toastLiveExample = document.querySelector('.toast')
-            const toast = new bootstrap.Toast(toastLiveExample)
-            toast.show()
+            const toastLiveExample = document.querySelector('.toast');
+            const toast = new bootstrap.Toast(toastLiveExample);
+            toast.show();
         });
     })
 }
