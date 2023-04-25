@@ -11,14 +11,14 @@ const dropdownMenu = document.querySelector(".dropdown-menu");
 
 // get from back-end
 const productImg = "img";
-const productName = "ilovecoding";
+const productName = "coach";
 const productQuantity = parseInt(productQuantityInput.value);
 const rowPrice = productQuantity * productPrice;
 
 // Event Listeners
 
 const updateTotalPrice = () => {
-  const quantity = productQuantity;
+  const quantity = productQuantityInput.value;
   const total = productPrice * quantity;
   totalPrice.innerHTML = `총 금액: ${total} 원`;
 };
@@ -27,6 +27,7 @@ productQuantityInput.addEventListener("input", updateTotalPrice);
 
 cartSubmitBtn.addEventListener("click", async function () {
   const productQuantity = parseInt(productQuantityInput.value); // 최신 값으로 업데이트
+  const rowPrice = productQuantity * productPrice;
 
   let productCart;
   if (localStorage.getItem("productCart")) {
@@ -46,7 +47,13 @@ cartSubmitBtn.addEventListener("click", async function () {
   }
 
   if (!isProductFound) {
-    const productOne = [productImg, productName, productQuantity, rowPrice];
+    const productOne = [
+      productImg,
+      productName,
+      productQuantity,
+      rowPrice,
+      productPrice,
+    ];
     productCart.push(productOne);
   }
 
