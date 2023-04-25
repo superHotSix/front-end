@@ -1,17 +1,16 @@
-table {
-  border-collapse: collapse;
-  width: 100%;
+.xBtn {
+  cursor: pointer;
 }
-th,
-td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
+
+.deleteBtn {
+  cursor: pointer;
+
+  text-align: right;
+  color: blue;
 }
-th {
-  background-color: #f2f2f2;
-}
-img {
-  max-width: 100px;
-  max-height: 100px;
+
+.result {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
 }

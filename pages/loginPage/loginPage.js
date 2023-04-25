@@ -6,42 +6,84 @@ const naverLoginBtn = document.getElementById("btn3")
 const SingUpBtn = document.getElementById("btn4")
 const appleLoginBtn = document.getElementById("btn5")
 const searchInput = document.getElementById("searchInput")
+const TYPE_NONMEMBER = "nonMember"
+const TYPE_MEMBER = "member"
+const USER = "user"
+const LOGIN_API = "/login"
 
-const userEmail = idInput.value;
-const userPassword = passwordInput.value;
+async function onSubmit(e) {
+  e.preventDefault();
 
-const userData = {
-  userEmail,
-  userPassword
+  const userEmail = idInput.value;
+  const userPassword = passwordInput.value;
+
+  const userData = {
+    userEmail,
+    userPassword,
+  };
+
+  try {
+    const response = await fetch(LOGIN_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Error: Failed to login");
+    }
+
+    alert("로그인에 성공하였습니다.");
+    localStorage.removeItem(USER);
+
+    const savedUserInLocalStorage = {
+      userEmail: `${userData.userEmail}`,
+      userType: TYPE_MEMBER,
+    };
+
+    saveUserLocalStorage(savedUserInLocalStorage);
+
+    try {
+      const response = await fetch("/");
+      if (!response.ok) {
+        throw new Error("Error: Failed to fetch data");
+      }
+      const html = await response.text();
+      document.documentElement.innerHTML = html;
+      window.location.href = "/";
+    } catch (e) {
+      alert(e);
+    }
+  } catch (e) {
+    alert(e);
+  }
+}
+
+// local storage 유저 아이디 저장
+function saveUserLocalStorage(savedUserInLocalStorage) {
+  localStorage.setItem(USER, JSON.stringify(savedUserInLocalStorage));
+}
+
+let savedUser = localStorage.getItem(USER);
+let savedUserObj = JSON.parse(savedUser);
+
+// 로컬스토리지에 유저정보가 없을 때 - 기본 nonMember로 로컬스토리지 저장
+if (savedUser === null) {
+  savedUserDataInLocalStorage();
+}
+
+function savedUserDataInLocalStorage() {
+  const savedUserInLocalStorage = {
+    userType: TYPE_NONMEMBER,
+  };
+
+  localStorage.setItem(USER, JSON.stringify(savedUserInLocalStorage));
 }
 
 
-async function onLoinSubmit(e) {
-    e.preventDefault
-    
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    //상품 json 받아왔을때, 받는거 실패했을때 나눠어서 error처리 추가
-    const users = await response.json();
-    const rightUser = users.filter((user) => user.userEmail === userData.userEmail)
-    
-    if(rightUser.userEmail && rightUser[0].userPassword === userData.userPassword){
-      alert("로그인에 성공하였습니다!")
-      
-      saveUserLocalStorage()//local storage 유저 아이디 저장 
-      history.back()  //이전 페이지 이동
-    
-    } else {  
-      alert("아이디 또는 비밀번호가 일치하지 않습니다.")
-      }
-   }
 
-
-//local storage 유저 아이디 저장 
-function saveUserLocalStorage(){
-  localStorage.setItem("userEmail", userData.userEmail)
- }
-  
-const savedUser = localStorage.getItem("userEmail");
 
 function savedUserCheck(){
   if(savedUser === null){
@@ -54,7 +96,20 @@ function savedUserCheck(){
 
 
 loginBtn.addEventListener("click",onLoinSubmit)
-
+SingUpBtn.addEventListener("click",(async () => {
+  try {
+    const response = await fetch("/signUp");
+    if (!response.ok) {
+      throw new Error("err");
+    }
+    window.location.href = "/signUp";
+    const html = await response.text();
+    document.documentElement.innerHTML = html;
+  } catch (e) {
+    console.log(e);
+  }
+})
+)
 
 //카카오 연동하여 로그인하기
 //https://tyrannocoding.tistory.com/49
@@ -71,3 +126,4 @@ loginBtn.addEventListener("click",onLoinSubmit)
 
 //검색어 자동완성 기능
 //https://velog.io/@1703979/JS-30-06 참고
+

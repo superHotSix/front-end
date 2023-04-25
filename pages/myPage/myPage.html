@@ -19,7 +19,7 @@
     />
     <title>Document</title>
   </head>
-  <body>
+  <body class="container">
     <header></header>
     <main>
       <div class="profileContainer">
@@ -30,7 +30,9 @@
             alt="유저 이미지"
           />
         </div>
-        <div class="userWelcome">김종운 회원님<br />반갑습니다 🖐️</div>
+        <div>
+          <h2>김종운 회원님<br />반갑습니다 🖐️</h2>
+        </div>
       </div>
 
       <div class="optionContainer">
@@ -62,52 +64,71 @@
     </main>
 
     <div class="userInfoForm">
-      <table>
+      <div class="mb-3">
+        <div>프로필 이미지</div>
+        <input class="form-control" type="file" id="formFile" />
+      </div>
+      <div class="mb-3">
+        <div>이름</div>
+        <input type="text" class="form-control" id="userName" disabled />
+      </div>
+      <div class="mb-3">
+        <div>이메일</div>
+        <input
+          type="email"
+          class="form-control"
+          id="userEmail"
+          placeholder="name@example.com"
+        />
+      </div>
+      <div class="mb-3">
+        <div>비밀번호</div>
+        <input type="password" class="form-control" id="userPassword" />
+      </div>
+      <div class="mb-3">
+        <div>주소</div>
+        <input type="text" class="form-control" id="userAddress" />
+      </div>
+      <div class="mb-3">
+        <div>전화번호</div>
+        <input
+          type="tel"
+          class="form-control m-input telInput"
+          name="tel"
+          id="userPhoneInput"
+          maxlength="13"
+          placeholder="예) 010-1234-5678"
+        />
+      </div>
+      <div class="text-center">
+        <button class="saveBtn btn btn-primary d-inline-flex">저장</button>
+      </div>
+    </div>
+
+    <div class="userCartForm">
+      <table class="table">
+        <thead>
+          <th scope="col">#</th>
+          <th scope="col">사진</th>
+          <th scope="col">상품 이름</th>
+          <th scope="col">수량</th>
+          <th scope="col">가격</th>
+        </thead>
         <tbody>
           <tr>
-            <td rowspan="6">개인정보</td>
-            <td id="userImg">프로필 사진</td>
-            <td>
-              <button
-                class="saveBtn btn btn-primary d-inline-flex align-items-center"
-              >
-                추가
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>이름</td>
-            <td><input id="userName" type="text" /></td>
-          </tr>
-          <tr>
-            <td>이메일</td>
-            <td><input id="userEmail" type="text" /></td>
-          </tr>
-          <tr>
-            <td>패스워드</td>
-            <td><input id="userPassword" type="password" /></td>
-          </tr>
-          <tr>
-            <td>전화번호</td>
-            <td>
-              <input type="number" /> - <input type="number" /> -
-              <input type="number" />
-            </td>
-          </tr>
-          <tr>
-            <td>주소</td>
-            <td><input id="userAddress" type="text" /></td>
+            <th scope="row">1</th>
+            <td>사진</td>
+            <td>애플 스티커</td>
+            <td>2</td>
+            <td>1000</td>
           </tr>
         </tbody>
       </table>
-      <button class="saveBtn btn btn-primary d-inline-flex align-items-center">
-        저장
-      </button>
     </div>
 
     <div id="contact">
-      <div>근무시간 : 09 : 00 ~ 18 : 00</div>
-      <div>전화번호 : 02 - 1234 - 1234</div>
+      <h2>근무시간 : 09 : 00 ~ 18 : 00</h2>
+      <h2>전화번호 : 02 - 1234 - 1234</h2>
     </div>
 
     <script src="myPage.js"></script>
