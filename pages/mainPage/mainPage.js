@@ -13,3 +13,5 @@ loginBtn.addEventListener("click", async () => {
     console.log(e);
   }
 });
+
+window.location.href("");

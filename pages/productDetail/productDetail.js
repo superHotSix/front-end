@@ -11,33 +11,56 @@ const dropdownMenu = document.querySelector(".dropdown-menu");
 
 // get from back-end
 const productImg = "img";
-const productName = "something";
-const productQuantity = 2;
-const rowPrice = (parseInt(productQuantityInput.value) || 0) * productPrice;
+const productName = "coach";
+const productQuantity = parseInt(productQuantityInput.value);
+const rowPrice = productQuantity * productPrice;
 
 // Event Listeners
 
 const updateTotalPrice = () => {
-  const quantity = parseInt(productQuantityInput.value) || 0;
+  const quantity = productQuantityInput.value;
   const total = productPrice * quantity;
   totalPrice.innerHTML = `총 금액: ${total} 원`;
 };
 
 productQuantityInput.addEventListener("input", updateTotalPrice);
 
-cartSubmitBtn.addEventListener("click", function () {
-  const product = {
-    productImg: productImg,
-    productName: productName,
-    productQuantity: productQuantity,
-    productPrice: rowPrice,
-  }; // 객체를 만들지 말고 배열로 진행하는 방법으로 로직 구현
+cartSubmitBtn.addEventListener("click", async function () {
+  const productQuantity = parseInt(productQuantityInput.value); // 최신 값으로 업데이트
+  const rowPrice = productQuantity * productPrice;
 
-  const productString = JSON.stringify(product);
+  let productCart;
+  if (localStorage.getItem("productCart")) {
+    productCart = await JSON.parse(localStorage.getItem("productCart"));
+  } else {
+    productCart = [];
+  }
 
-  localStorage.setItem("product", productString);
+  let isProductFound = false;
 
-  window.location.href = "../productCart/productCart.html";
+  for (let i = 0; i < productCart.length; i++) {
+    if (productCart[i][1] === productName) {
+      productCart[i][2] += productQuantity;
+      productCart[i][3] += rowPrice;
+      isProductFound = true;
+    }
+  }
+
+  if (!isProductFound) {
+    const productOne = [
+      productImg,
+      productName,
+      productQuantity,
+      rowPrice,
+      productPrice,
+    ];
+    productCart.push(productOne);
+  }
+
+  const productString = JSON.stringify(productCart);
+  localStorage.setItem("productCart", productString);
+
+  alert("장바구니에 추가가 완료되었습니다");
 });
 
 colorOptionBtn.addEventListener("click", (event) => {

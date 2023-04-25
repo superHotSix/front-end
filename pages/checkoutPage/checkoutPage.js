@@ -22,6 +22,10 @@ const userEmail = userEmailInput.value
 const userPhone = userPhoneInput.value
 const userAddress = userAddressInput.value
 
+const userName = userNameInput.value;
+const userEmail = userEmailInput.value;
+const userPhone = userPhoneInput.value;
+const userAddress = userAddressInput.value;
 
 const PROMOTION_CODE = [{
     promotionCode : "WELCOME",
@@ -33,10 +37,10 @@ const PROMOTION_CODE = [{
 //비회원이면 해당 체크박스 안보임
 const savedUser = localStorage.getItem("user");
 let savedUserObj = JSON.parse(savedUser);
-if(savedUserObj.userType === "nonMember"){
-    formCheckIfMember.classList.add("hidden")
-}else{
-    formCheckIfMember.classList.remove("hidden")
+if (savedUserObj.userType === "nonMember") {
+  formCheckIfMember.classList.add("hidden");
+} else {
+  formCheckIfMember.classList.remove("hidden");
 }
 
 //체크박스 체크여부 - 정보가져오기
@@ -45,26 +49,26 @@ async function isChecked() {
     const response = await fetch(CHECKOUT_API);
     //상품 json 받아왔을때, 받는거 실패했을때 나눠어서 error처리 추가
     const users = await response.json();
-    const rightUser = users.filter((user) => user.email === savedUserObj.userEmail)
+    const rightUser = users.filter(
+      (user) => user.email === savedUserObj.userEmail
+    );
 
-    const userName = rightUser[0].name
-    const userEmail = rightUser[0].email
-    const userPhone = rightUser[0].phone
-    const userAddress = rightUser[0].userAddress
+    const userName = rightUser[0].name;
+    const userEmail = rightUser[0].email;
+    const userPhone = rightUser[0].phone;
+    const userAddress = rightUser[0].userAddress;
 
-    userPhoneInput.setAttribute("value", userPhone)
-    userNameInput.setAttribute("value", userName)
-    userEmailInput.setAttribute("value", userEmail)
-    userAddressInput.setAttribute("value", userAddress)
-   
- }else{
-    const result = '';
-    userPhoneInput.setAttribute("value", result)
-    userNameInput.setAttribute("value", result)
-    userEmailInput.setAttribute("value", result)
-    userAddressInput.setAttribute("value", result)
-
- }
+    userPhoneInput.setAttribute("value", userPhone);
+    userNameInput.setAttribute("value", userName);
+    userEmailInput.setAttribute("value", userEmail);
+    userAddressInput.setAttribute("value", userAddress);
+  } else {
+    const result = "";
+    userPhoneInput.setAttribute("value", result);
+    userNameInput.setAttribute("value", result);
+    userEmailInput.setAttribute("value", result);
+    userAddressInput.setAttribute("value", result);
+  }
 }
 //상품가져오기 - 장바구니에서 결제로 넘어갈때, 상품에서 바로 결제로 넘어갈때
 //총 결제금액
@@ -131,6 +135,8 @@ async function onCheckoutHandle(){
 
 }
 
-PromotionRegisterBtn.addEventListener("click", onPromotionPrice)
-checkoutBtn.addEventListener("click", onCheckoutHandle)
-BringsavedUsercheckbox.addEventListener("click", isChecked)
+function onCheckoutHandle() {}
+
+PromotionRegisterBtn.addEventListener("click", onPromotionPrice);
+checkoutBtn.addEventListener("click", onCheckoutHandle);
+BringsavedUsercheckbox.addEventListener("click", isChecked);
