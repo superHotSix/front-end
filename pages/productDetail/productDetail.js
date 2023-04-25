@@ -9,30 +9,58 @@ const cartSubmitBtn = document.querySelector(".cartSubmit");
 const colorOptionBtn = document.querySelector(".colorOptionBtn");
 const dropdownMenu = document.querySelector(".dropdown-menu");
 
+// get from back-end
+const productImg = "img";
+const productName = "coach";
+const productQuantity = parseInt(productQuantityInput.value);
+const rowPrice = productQuantity * productPrice;
+
 // Event Listeners
 
 const updateTotalPrice = () => {
-  const quantity = parseInt(productQuantityInput.value) || 0;
+  const quantity = productQuantityInput.value;
   const total = productPrice * quantity;
   totalPrice.innerHTML = `총 금액: ${total} 원`;
 };
 
 productQuantityInput.addEventListener("input", updateTotalPrice);
 
-cartSubmitBtn.addEventListener("click", function () {
-  // 선택된 상품 정보 가져오기
-  const productImage = document
-    .querySelector(".productImage")
-    .getAttribute("src");
-  const productName = document.querySelector(".productName").textContent;
-  const productPrice = document.querySelector(".productPrice").textContent;
-  const productQuantity = document.querySelector(".productQuantityInput").value;
+cartSubmitBtn.addEventListener("click", async function () {
+  const productQuantity = parseInt(productQuantityInput.value); // 최신 값으로 업데이트
+  const rowPrice = productQuantity * productPrice;
 
-  // 쿼리 스트링 생성
-  const queryString = `?image=${productImage}&name=${productName}&price=${productPrice}&quantity=${productQuantity}`;
+  let productCart;
+  if (localStorage.getItem("productCart")) {
+    productCart = await JSON.parse(localStorage.getItem("productCart"));
+  } else {
+    productCart = [];
+  }
 
-  // 새로운 페이지로 이동
-  window.location.href = `../productCart/productCart.html${queryString}`;
+  let isProductFound = false;
+
+  for (let i = 0; i < productCart.length; i++) {
+    if (productCart[i][1] === productName) {
+      productCart[i][2] += productQuantity;
+      productCart[i][3] += rowPrice;
+      isProductFound = true;
+    }
+  }
+
+  if (!isProductFound) {
+    const productOne = [
+      productImg,
+      productName,
+      productQuantity,
+      rowPrice,
+      productPrice,
+    ];
+    productCart.push(productOne);
+  }
+
+  const productString = JSON.stringify(productCart);
+  localStorage.setItem("productCart", productString);
+
+  alert("장바구니에 추가가 완료되었습니다");
 });
 
 colorOptionBtn.addEventListener("click", (event) => {

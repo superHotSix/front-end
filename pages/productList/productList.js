@@ -55,9 +55,9 @@ function onloadMore() {
 
 // productHTML 생성 함수
 function creatProductEl(product) {
-    const productEl = document.createElement('div');
-    productEl.className = 'col-md-3';
-    productEl.innerHTML =`
+  const productEl = document.createElement("div");
+  productEl.className = "col-md-3";
+  productEl.innerHTML = `
     <div class="card border-0">
       <img src="${product.thumnailImg}" class="card-img-top" alt="...">
       <div class="card-body">
@@ -70,7 +70,7 @@ function creatProductEl(product) {
       </div>
     </div>
   `;
-    return productEl;
+  return productEl;
 }
 // 렌더링후 더보기버튼 추가 함수
 function moreBtnRender(start, limit) {
@@ -89,10 +89,9 @@ function moreBtnRender(start, limit) {
     productRow.appendChild(morebtnEl);
 }
 
-
 // 추가 물품 렌더링후 더보기버튼 제거 함수
 function removeBtn() {
-    document.querySelector('.more-btn-row').remove()
+  document.querySelector(".more-btn-row").remove();
 }
 
 

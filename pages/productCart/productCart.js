@@ -1,34 +1,53 @@
-// 쿼리 스트링 파싱
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+const productCart = JSON.parse(localStorage.getItem("productCart"));
+const deleteBtn = document.querySelector(".deleteBtn");
 
-// 선택된 상품 정보 가져오기
-const productImage = urlParams.get("image");
-const productName = urlParams.get("name");
-const productPrice = urlParams.get("price");
-const productQuantity = urlParams.get("quantity");
+const tbody = document.querySelector("tbody");
+var sum = 0;
 
-const tableBody = document.querySelector("tbody");
-const productRow = document.createElement("tr");
-const productImageCell = document.createElement("td");
+for (let i = 0; i < productCart.length; i++) {
+  let eachrow = `<tr>
+    <th scope="row" id="row${i}">${i + 1}</th>
+    <td>${productCart[i][0]}</td>
+    <td>${productCart[i][1]}</td>
+    <td><input type="number" value=${
+      productCart[i][2]
+    } class="inputVal${i}" ></td>
+    <td>${productCart[i][3]}</td>
+    <td><img src="../img/x.svg" class="xBtn" /></td>
+  </tr>`;
 
-productImage.src = productImage;
-productImageCell.appendChild(productImage);
-productImageCell.appendChild(document.createTextNode(productName));
+  tbody.innerHTML += eachrow;
+  sum += productCart[i][3];
+}
 
-const productQuantityCell = document.createElement("td");
-productQuantityCell.textContent = productQuantity;
+for (let i = 0; i < productCart.length; i++) {
+  const quantityInput = document.querySelector(`.inputVal${i}`);
+  quantityInput.addEventListener("input", (e) => {
+    productCart[i][2] = quantityInput.value;
+    productCart[i][3] = productCart[i][2] * productCart[i][4];
+    localStorage.setItem("productCart", JSON.stringify(productCart));
+    location.reload();
+  });
+}
 
-const productPriceCell = document.createElement("td");
-productPriceCell.textContent = productPrice;
+var totalPrice = document.querySelector(".totalPrice");
+totalPrice.innerHTML = sum;
 
-const productTotalCell = document.createElement("td");
-productTotalCell.textContent =
-  parseInt(productPrice) * parseInt(productQuantity);
+const xBtn = document.querySelectorAll(".xBtn");
 
-productRow.appendChild(productImageCell);
-productRow.appendChild(productQuantityCell);
-productRow.appendChild(productPriceCell);
-productRow.appendChild(productTotalCell);
+for (let i = 0; i < xBtn.length; i++) {
+  xBtn[i].addEventListener("click", (e) => {
+    const index = e.target.dataset.index; // 클릭한 버튼의 data-index 값을 가져옴
+    productCart.splice(index, 1); // 해당 배열 삭제
+    localStorage.setItem("productCart", JSON.stringify(productCart)); // 로컬 스토리지에 새로운 카트 정보 저장
+    location.reload(); // 페이지 리로드
+  });
+}
 
-tableBody.appendChild(productRow);
+deleteBtn.addEventListener("click", () => {
+  const confirmed = confirm("장바구니에 있는 모든 값을 삭제합니다");
+  if (confirmed) {
+    localStorage.removeItem("productCart");
+    location.reload(); // 삭제 작업 후 페이지 리로드
+  }
+});
