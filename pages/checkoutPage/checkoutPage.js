@@ -75,7 +75,7 @@ async function isChecked() {
 function onPromotionPrice(e) {
 e.preventDefault();
 
-// 프로모션 코드가 있는 요소를 찾습니다.
+// 프로모션 코드가 있는 요소 찾기
 const nodes = Array.from(document.querySelectorAll('li.list-group-item'));
 const index = nodes.findIndex(node => node.classList.contains('promotionCode'));
 
@@ -107,7 +107,7 @@ for (let i = 0; i < PROMOTION_CODE.length; i++) {
     break;
   }
 }
-
+//맞는 프로모션 코드가 아니라면
 if (!foundPromotion) {
   alert('올바르지 않은 프로모션 코드입니다.');
 }

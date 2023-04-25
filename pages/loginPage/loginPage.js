@@ -11,7 +11,7 @@ const TYPE_MEMBER = "member"
 const USER = "user"
 const LOGIN_API = "/login"
 
-async function onLoinSubmit(e) {
+async function onSubmit(e) {
   e.preventDefault();
 
   const userEmail = idInput.value;
@@ -28,47 +28,36 @@ async function onLoinSubmit(e) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData), // 객체를 문자열로 변환해 body에 넣어줘야 합니다.
+      body: JSON.stringify(userData),
     });
 
     if (!response.ok) {
-      throw new Error("err");
+      throw new Error("Error: Failed to login");
     }
 
-    const users = await response.json();
-    const rightUser = users.filter(
-      (user) => user.userEmail === userData.userEmail
-    );
+    alert("로그인에 성공하였습니다.");
+    localStorage.removeItem(USER);
 
-    if (rightUser[0] && rightUser[0].userPassword === userData.userPassword) {
-      alert("로그인에 성공하였습니다.");
-      localStorage.removeItem(USER);
+    const savedUserInLocalStorage = {
+      userEmail: `${userData.userEmail}`,
+      userType: TYPE_MEMBER,
+    };
 
-      const savedUserInLocalStorage = {
-        userEmail: `${rightUser[0].userEmail}`,
-        userType: TYPE_MEMBER,
-      };
+    saveUserLocalStorage(savedUserInLocalStorage);
 
-      saveUserLocalStorage(savedUserInLocalStorage);
-
-      try {
-        const response = await fetch("/");
-        if (!response.ok) {
-          throw new Error("err");
-        }
-        const html = await response.text();
-        document.documentElement.innerHTML = html;
-        window.location.href = "/";
-      } catch (e) {
-        console.log(e);
+    try {
+      const response = await fetch("/");
+      if (!response.ok) {
+        throw new Error("Error: Failed to fetch data");
       }
-    } else if (rightUser[0] && rightUser[0].userPassword !== userData.userPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
-    } else {
-      alert("아이디가 일치하지 않습니다.");
+      const html = await response.text();
+      document.documentElement.innerHTML = html;
+      window.location.href = "/";
+    } catch (e) {
+      alert(e);
     }
   } catch (e) {
-    console.log(e);
+    alert(e);
   }
 }
 

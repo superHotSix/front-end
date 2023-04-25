@@ -24,6 +24,9 @@ const userPassword = passwordInput.value
 const userPasswordConfirmInput = passwordConfirmInput.value
 const userAddress = addressInput.value + address2Input.value
 
+if(!userEmail.split("").find('@')){
+  alert('올바른 이메일 형식이 아닙니다')
+}
 
 if(userPassword.length > 8){
     alert('비밀번호는 8자 이상되어야 합니다.')
