@@ -47,8 +47,32 @@ a.nav-link{
     margin-left: 10px;
 }
 
+.concept{
+    margin-top: 20px;
+}
+.concept-div{
+    height: 100px;
+    background-image: url(https://images.pexels.com/photos/251603/pexels-photo-251603.jpeg);
+    background-size: 100%;
+    filter: grayscale(100%);
+    transition: filter 1s ease;
+    border-radius: 20px;
+    margin: 10px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+.concept-div:hover{
+    filter: grayscale(0%);
+}
 
-
+.toast{
+    top: 7%;
+    right: 0
+}
+.add-cart{
+    cursor: pointer;
+}
 .card > img{
     filter: drop-shadow(3px 4px 4px);
     width: 300px;
@@ -74,10 +98,20 @@ a.nav-link{
 .cool{
     background-color: aqua !important;
 }
+.vintage{
+    background-color: darkgrey !important;
+}
+.modern{
+    background-color: darkgreen !important;
+}
+.excite{
+    background-color: blueviolet !important;
+}
 .more-btn{
     color: #fff;
     background-color: #786364;
 }
+
 
 
 /* {
