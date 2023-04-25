@@ -98,7 +98,7 @@ function removeBtn() {
 
 
 
-//concept버튼부분 
+//concept버튼부분 버그있음 
 
 const conceptBtn = document.querySelectorAll('.concept-div');
 const wramBtn = document.querySelector('.w-c');

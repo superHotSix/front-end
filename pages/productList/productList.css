@@ -55,7 +55,7 @@ a.nav-link{
     background-image: url(https://images.pexels.com/photos/251603/pexels-photo-251603.jpeg);
     background-size: 100%;
     filter: grayscale(100%);
-    transition: filter 1.5s ease;
+    transition: filter 1s ease;
     border-radius: 20px;
     margin: 10px;
     font-size: 2rem;
