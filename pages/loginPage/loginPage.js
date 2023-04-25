@@ -6,62 +6,92 @@ const naverLoginBtn = document.getElementById("btn3")
 const SingUpBtn = document.getElementById("btn4")
 const appleLoginBtn = document.getElementById("btn5")
 const searchInput = document.getElementById("searchInput")
+const TYPE_NONMEMBER = "nonMember"
+const TYPE_MEMBER = "member"
+const USER = "user"
+const LOGIN_API = "/login"
 
 async function onLoinSubmit(e) {
-    e.preventDefault
-    
-    const userEmail = idInput.value;
-    const userPassword = passwordInput.value;
+  e.preventDefault();
 
-    const userData = {
-      userEmail,
-      userPassword
+  const userEmail = idInput.value;
+  const userPassword = passwordInput.value;
+
+  const userData = {
+    userEmail,
+    userPassword,
+  };
+
+  try {
+    const response = await fetch(LOGIN_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData), // 객체를 문자열로 변환해 body에 넣어줘야 합니다.
+    });
+
+    if (!response.ok) {
+      throw new Error("err");
     }
 
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-    //json 받아왔을때, 받는거 실패했을때 나눠어서 error처리 추가
     const users = await response.json();
-    const rightUser = users.filter((user) => user.email === userData.userEmail)
-    
-    if(rightUser[0] && rightUser[0].name === userData.userPassword){
-    alert("로그인에 성공하였습니다.")
-    localStorage.removeItem("user")
+    const rightUser = users.filter(
+      (user) => user.userEmail === userData.userEmail
+    );
 
-    const savedUserInLocalStorage = {
-      userEmail : `${rightUser[0].email}`,
-      userType : "member"
+    if (rightUser[0] && rightUser[0].userPassword === userData.userPassword) {
+      alert("로그인에 성공하였습니다.");
+      localStorage.removeItem(USER);
+
+      const savedUserInLocalStorage = {
+        userEmail: `${rightUser[0].userEmail}`,
+        userType: TYPE_MEMBER,
+      };
+
+      saveUserLocalStorage(savedUserInLocalStorage);
+
+      try {
+        const response = await fetch("/");
+        if (!response.ok) {
+          throw new Error("err");
+        }
+        const html = await response.text();
+        document.documentElement.innerHTML = html;
+        window.location.href = "/";
+      } catch (e) {
+        console.log(e);
+      }
+    } else if (rightUser[0] && rightUser[0].userPassword !== userData.userPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+    } else {
+      alert("아이디가 일치하지 않습니다.");
     }
-
-    saveUserLocalStorage(savedUserInLocalStorage)
-    
-    }else if(rightUser[0] && rightUser[0].name !== userData.userPassword){
-      alert("비밀번호가 일치 하지 않습니다.")
-    }else{
-      alert("아이디가 일치 하지 않습니다.")
-    }
-   }
-
-
-//local storage 유저 아이디 저장 
-function saveUserLocalStorage(savedUserInLocalStorage){
-  localStorage.setItem("user", JSON.stringify(savedUserInLocalStorage))
- }
-  
-let savedUser = localStorage.getItem("user");
-let savedUserObj = JSON.parse(savedUser)
-
-//로컬스토리지에 유저정보가 없을때 - 기본 nonMember로 로컬스토리지 저장
-if(savedUser === null){
-savedUserDataInLocalStorage()
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-function savedUserDataInLocalStorage(){
+// local storage 유저 아이디 저장
+function saveUserLocalStorage(savedUserInLocalStorage) {
+  localStorage.setItem(USER, JSON.stringify(savedUserInLocalStorage));
+}
+
+let savedUser = localStorage.getItem(USER);
+let savedUserObj = JSON.parse(savedUser);
+
+// 로컬스토리지에 유저정보가 없을 때 - 기본 nonMember로 로컬스토리지 저장
+if (savedUser === null) {
+  savedUserDataInLocalStorage();
+}
+
+function savedUserDataInLocalStorage() {
   const savedUserInLocalStorage = {
-    userType : "nonMember"
-  }
-  
-  localStorage.setItem("user", JSON.stringify(savedUserInLocalStorage))
-  }
+    userType: TYPE_NONMEMBER,
+  };
+
+  localStorage.setItem(USER, JSON.stringify(savedUserInLocalStorage));
+}
 
 
 
@@ -77,7 +107,20 @@ function savedUserCheck(){
 
 
 loginBtn.addEventListener("click",onLoinSubmit)
-
+SingUpBtn.addEventListener("click",(async () => {
+  try {
+    const response = await fetch("/signUp");
+    if (!response.ok) {
+      throw new Error("err");
+    }
+    window.location.href = "/signUp";
+    const html = await response.text();
+    document.documentElement.innerHTML = html;
+  } catch (e) {
+    console.log(e);
+  }
+})
+)
 
 //카카오 연동하여 로그인하기
 //https://tyrannocoding.tistory.com/49
@@ -94,3 +137,4 @@ loginBtn.addEventListener("click",onLoinSubmit)
 
 //검색어 자동완성 기능
 //https://velog.io/@1703979/JS-30-06 참고
+
