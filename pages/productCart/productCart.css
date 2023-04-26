@@ -3,6 +3,7 @@
 }
 
 .deleteBtn {
+  margin-top: 100px;
   cursor: pointer;
 
   text-align: right;

@@ -9,23 +9,17 @@ const cartSubmitBtn = document.querySelector(".cartSubmit");
 const colorOptionBtn = document.querySelector(".colorOptionBtn");
 const dropdownMenu = document.querySelector(".dropdown-menu");
 
-// get from back-end
+const productPurchaseButton = document.querySelector(".productPurchaseButton");
+
+// fetch
+
+// mockup Data
 const productImg = "img";
 const productName = "coach";
 const productQuantity = parseInt(productQuantityInput.value);
 const rowPrice = productQuantity * productPrice;
 
-// Event Listeners
-
-const updateTotalPrice = () => {
-  const quantity = productQuantityInput.value;
-  const total = productPrice * quantity;
-  totalPrice.innerHTML = `총 금액: ${total} 원`;
-};
-
-productQuantityInput.addEventListener("input", updateTotalPrice);
-
-cartSubmitBtn.addEventListener("click", async function () {
+async function cartSave() {
   const productQuantity = parseInt(productQuantityInput.value); // 최신 값으로 업데이트
   const rowPrice = productQuantity * productPrice;
 
@@ -61,6 +55,23 @@ cartSubmitBtn.addEventListener("click", async function () {
   localStorage.setItem("productCart", productString);
 
   alert("장바구니에 추가가 완료되었습니다");
+}
+
+// Event Listeners
+
+const updateTotalPrice = () => {
+  const quantity = productQuantityInput.value;
+  const total = productPrice * quantity;
+  totalPrice.innerHTML = `총 금액: ${total} 원`;
+};
+
+productQuantityInput.addEventListener("input", updateTotalPrice);
+
+cartSubmitBtn.addEventListener("click", cartSave);
+
+productPurchaseButton.addEventListener("click", () => {
+  cartSave();
+  window.location.href = "../checkoutPage";
 });
 
 colorOptionBtn.addEventListener("click", (event) => {

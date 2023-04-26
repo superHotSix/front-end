@@ -1,15 +1,15 @@
-const idInput = document.getElementById("idInput")
-const passwordInput = document.getElementById("passwordInput")
-const loginBtn = document.getElementById("btn1")
-const kakaoLoginBtn = document.getElementById("btn2")
-const naverLoginBtn = document.getElementById("btn3")
-const SingUpBtn = document.getElementById("btn4")
-const appleLoginBtn = document.getElementById("btn5")
-const searchInput = document.getElementById("searchInput")
-const TYPE_NONMEMBER = "nonMember"
-const TYPE_MEMBER = "member"
-const USER = "user"
-const LOGIN_API = "/login"
+const idInput = document.getElementById("idInput");
+const passwordInput = document.getElementById("passwordInput");
+const loginBtn = document.getElementById("btn1");
+const kakaoLoginBtn = document.getElementById("btn2");
+const naverLoginBtn = document.getElementById("btn3");
+const signUpBtn = document.getElementById("btn4");
+const appleLoginBtn = document.getElementById("btn5");
+const searchInput = document.getElementById("searchInput");
+const TYPE_NONMEMBER = "nonMember";
+const TYPE_MEMBER = "member";
+const USER = "user";
+const LOGIN_API = "/login";
 
 async function onSubmit(e) {
   e.preventDefault();
@@ -82,34 +82,33 @@ function savedUserDataInLocalStorage() {
   localStorage.setItem(USER, JSON.stringify(savedUserInLocalStorage));
 }
 
-
-
-
-function savedUserCheck(){
-  if(savedUser === null){
+function savedUserCheck() {
+  if (savedUser === null) {
     //로그인, 회원가입 버튼 보이기
-  }else{
+  } else {
     //로그인, 회원가입 버튼 안보이게; 로그아웃, 마이페이지 보이게?
   }
-
 }
 
+// loginBtn.addEventListener("click", onLoinSubmit);
+// SingUpBtn.addEventListener("click",(async () => {
+//   try {
+//     const response = await fetch("/signUp");
+//     if (!response.ok) {
+//       throw new Error("err");
+//     }
+//     window.location.href = "/signUp";
+//     const html = await response.text();
+//     document.documentElement.innerHTML = html;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// })
+// )
 
-loginBtn.addEventListener("click",onLoinSubmit)
-SingUpBtn.addEventListener("click",(async () => {
-  try {
-    const response = await fetch("/signUp");
-    if (!response.ok) {
-      throw new Error("err");
-    }
-    window.location.href = "/signUp";
-    const html = await response.text();
-    document.documentElement.innerHTML = html;
-  } catch (e) {
-    console.log(e);
-  }
-})
-)
+signUpBtn.addEventListener("click", () => {
+  window.location.href = "../signUpForm/signUpForm.html";
+});
 
 //카카오 연동하여 로그인하기
 //https://tyrannocoding.tistory.com/49
@@ -120,10 +119,8 @@ SingUpBtn.addEventListener("click",(async () => {
 
 //apple 연동하여 로그인하기
 
-
 //비회원 주문조회
 //페이지 이동
 
 //검색어 자동완성 기능
 //https://velog.io/@1703979/JS-30-06 참고
-
