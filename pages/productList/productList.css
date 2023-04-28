@@ -1,0 +1,101 @@
+.category {
+  padding: 0.5rem;
+}
+.product {
+  padding-top: 1rem;
+}
+a.nav-link {
+  padding: 0;
+}
+
+.sub-nav {
+  height: 3rem;
+}
+.dropdown {
+  margin-left: 10px;
+}
+
+.concept {
+  margin-top: 20px;
+}
+.concept-div {
+  height: 25px;
+  background-color: #8e6063;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  border-radius: 20px;
+  margin: 10px 60px 10px 60px;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.toast {
+  top: 10%;
+  right: 0;
+}
+.add-cart {
+  cursor: pointer;
+}
+.product-li {
+  column-count: 4;
+}
+.card {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.card > img {
+  /* filter: drop-shadow(3px 4px 4px); */
+  width: 500px;
+  /* height: 350px; */
+  transition: transform 0.8s;
+  border-radius: 0.5rem;
+}
+
+.card-img-overlay {
+  background-color: rgba(137, 136, 136, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.card-img-overlay:hover {
+  opacity: 1;
+}
+/* .card > img:hover {
+  transform: scale(1.07);
+  width: 300px;
+  height: 330px;
+} */
+.card .badge {
+  font-size: 5px;
+}
+/* 제품 컨셉별 뱃지 배경 색 */
+.warm {
+  background-color: darkgoldenrod !important;
+}
+.calm {
+  background-color: #786364 !important;
+}
+.cool {
+  background-color: aqua !important;
+}
+.vintage {
+  background-color: darkgrey !important;
+}
+.modern {
+  background-color: darkgreen !important;
+}
+.excite {
+  background-color: blueviolet !important;
+}
+.more-btn {
+  color: #fff;
+  background-color: #786364;
+}
+
+/* {
+color : #F6E9E2;
+color : #CFC5C9;
+color : #A79192;
+color : #D2AEAD;
+color : #786364;
+} */

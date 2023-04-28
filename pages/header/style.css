@@ -1,0 +1,26 @@
+.headerColor {
+  background-color: #f6e9e2;
+}
+
+.headerFontColor {
+  color: #786364;
+}
+
+.headerOptionColor {
+  color: #a79192;
+}
+
+.navbar-nav {
+  margin-left: auto; /* Move the menu to the right */
+}
+.navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* #F6E9E2
+#CFC5C9
+#A79192
+#D2AEAD
+#786364 */

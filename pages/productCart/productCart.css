@@ -1,0 +1,17 @@
+.xBtn {
+  cursor: pointer;
+}
+
+.deleteBtn {
+  margin-top: 100px;
+  cursor: pointer;
+
+  text-align: right;
+  color: blue;
+}
+
+.result {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot six</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="productList.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+		<!-- 네비게이션 바 -->
+    <header class="bg-white">
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
+        <div class="flex lg:flex-1">
+          <a href="../mainPage/" class="font-semibold leading-6 text-xl text-gray-900">
+            HOTSIX
+          </a>
+        </div>
+        <div class="lg:flex lg:gap-x-12">
+          <a
+            href="../productList/?category=sticker"
+            class="text-lg font-semibold leading-6 text-gray-900"
+            >Sticker</a
+          >
+          <a
+            href="../productList/?category=ring"
+            class="text-lg font-semibold leading-6 text-gray-900"
+            >Ring</a
+          >
+          <a
+            href="../productList/?category=necklace"
+            class="text-lg font-semibold leading-6 text-gray-900"
+            >Necklace</a
+          >
+        </div>
+        <div class="lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="../myPage/index.html"
+            class="text-sm mr-3 font-semibold leading-6 text-gray-900"
+            >My page</a
+          >
+          <a
+            href="../productCart/index.html"
+            class="text-sm mr-3 font-semibold leading-6 text-gray-900"
+            >Cart</a
+          >
+          <a
+            href="../loginPage/index.html"
+            class="text-sm mr-3 font-semibold leading-6 text-gray-900"
+            >Log in</a
+          >
+        </div>
+      </nav>
+    </header>
+        <div class="flex items-center justify-center flex-wrap">
+          <button
+            type="button"
+            class="conceptBtn text-gray-900 border border-white hover:border-gray-200 :border-gray-900 mx-2 :bg-gray-900 :hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center :text-white :focus:ring-gray-800"
+          >
+            Warm
+          </button>
+          <button
+            type="button"
+            class="conceptBtn text-gray-900 border border-white hover:border-gray-200 :border-gray-900 mx-2 :bg-gray-900 :hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2 text-center :text-white :focus:ring-gray-800"
+          >
+            Cool
+          </button>
+          <button
+            type="button"
+            class="conceptBtn text-gray-900 border border-white hover:border-gray-200 :border-gray-900 mx-2 :bg-gray-900 :hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-full text-base font-medium px-5 py-2 text-center :text-white :focus:ring-gray-800"
+          >
+            Vintage
+          </button>
+          <button
+            type="button"
+            class="conceptBtn text-gray-900 border border-white hover:border-gray-200 :border-gray-900 mx-2 :bg-gray-900 :hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-full text-base font-medium px-5 py-2 text-center :text-white :focus:ring-gray-800"
+          >
+            Modern
+          </button>
+          <button
+            type="button"
+            class="conceptBtn text-gray-900 border border-white hover:border-gray-200 :border-gray-900 mx-2 :bg-gray-900 :hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-full text-base font-medium px-5 py-2 text-center :text-white :focus:ring-gray-800"
+          >
+            Calm
+          </button>
+          <button
+            type="button"
+            class="conceptBtn text-gray-900 border border-white hover:border-gray-200 :border-gray-900 mx-2 :bg-gray-900 :hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center :text-white :focus:ring-gray-800"
+          >
+            Excite
+          </button>
+          <button
+            id="dropdownDefaultButton"
+            data-dropdown-toggle="dropdown"
+            class="text-black focus:outline-none font-medium rounded-lg text-base px-3 py-2 text-center inline-flex items-center"
+            type="button"
+          >
+            정렬
+            <svg
+              class="w-4 h-4 ml-2"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div
+            id="dropdown"
+            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-22"
+          >
+            <ul
+              class="py-2 text-sm text-gray-700"
+              aria-labelledby="dropdownDefaultButton"
+            >
+              <li>
+                <p
+                  class="lower-price block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >낮은 가격순</p
+                >
+              </li>
+              <li>
+                <p
+                  class="higher-price block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >높은 가격순</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+          <!-- 메인 상품  -->
+          <div class="product">
+            <div class=" g-3 product-li">
+            <div class="toast align-items-center position-fixed" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body">
+                  장바구니에 상품이 추가되었습니다.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="productList.js"></script>
+</body>
+</html>

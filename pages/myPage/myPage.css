@@ -1,0 +1,147 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: bold;
+}
+
+main {
+  padding: 100px;
+}
+
+.backgroundColor {
+  color: #fcefca;
+}
+
+.profileContainer {
+  display: grid;
+  grid-template-areas: "userImg userWelcome";
+  grid-template-columns: 0.3fr 0.7fr;
+  grid-template-rows: 15rem;
+
+  align-items: center;
+}
+
+.profileContainer > .userImg {
+  display: flex;
+  justify-content: center;
+}
+
+.userImgSvg {
+  grid-area: userImg;
+  width: 70%;
+  height: 70%;
+}
+
+.optionContainer {
+  display: grid;
+  grid-template-areas: "userInfo userCart contact";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 30rem;
+}
+
+.userInfo {
+  cursor: pointer;
+  grid-area: userInfo;
+
+  justify-self: center;
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sampleImg {
+  width: 50%;
+  height: 50%;
+  transition: width 0.2s linear, height 0.2s linear;
+}
+
+.sampleImg:hover {
+  width: 60%;
+  height: 60%;
+}
+
+.userCart {
+  cursor: pointer;
+  grid-area: userCart;
+
+  justify-self: center;
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sampleCart {
+  width: 50%;
+  height: 50%;
+  transition: width 0.2s linear, height 0.2s linear;
+}
+
+.sampleCart:hover {
+  width: 60%;
+  height: 60%;
+}
+
+.contact {
+  cursor: pointer;
+  grid-area: contact;
+
+  justify-self: center;
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sampleContact {
+  width: 50%;
+  height: 50%;
+  transition: width 0.2s linear, height 0.2s linear;
+}
+.sampleContact:hover {
+  width: 60%;
+  height: 60%;
+}
+
+.userInfoForm {
+  padding: 30px;
+  display: none;
+}
+
+.userImg,
+.userName,
+.userEmail,
+.userPassword,
+.userPhone,
+.userAddress {
+  padding: 30px;
+}
+
+.saveBtn {
+  margin-top: 20px;
+}
+
+.userCartForm {
+  display: none;
+}
+
+#contact {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+
+  font-size: 30px;
+  font-weight: bold;
+}

@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.p-3 text-bg-dark{
+    background-color: #786364;
+}
+/*
+.navigator ul li a{
+    color : #6c757d
+}
+
+
+.btnArea2 a,
+.btnArea2 span{
+    color: #CFC5C9
+}
+
+ul {
+    list-style: none;
+}
+
+#fixMainContainer{
+
+    text-align: center;
+    justify-content: center;
+    width: 1024px;
+    height: 30%;
+    margin: 0 auto;
+
+}
+
+.navigator{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content:right;
+    width:1024px;
+    height: 30px;
+}
+
+.navigator ul li{
+    margin: 10px 5px;
+    padding: 10px;
+}
+
+.brandName{
+    width:1024px;
+    text-align: center;
+  
+}
+*/
+
+
+#loginForm{
+    margin : 0px;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    justify-content: start;
+    width: 100%;
+    margin: 0 auto;
+
+
+}
+
+#loginInputContainer{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    margin: 30px 0;
+}
+
+.inputField{
+    text-align: start;
+    margin-bottom: 20px;
+    margin: 5px auto;
+}
+
+.inputField label{
+    color:#786364;
+}
+
+#passwordInput,
+#idInput{
+    width: 500px;
+    height: 60px;
+    border-left-width:0;
+    border-right-width:0;
+    border-top-width:0;
+    border-bottom-width:1;
+    border-color: #CFC5C9;
+}
+
+
+#loginBtnContainer{
+    width: 100%;
+}
+
+.btnArea1{
+    width: 510px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+.btn-outline-secondary{
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    margin: 5px;
+    height: 40px;
+    
+}
+
+.btn-outline-secondary:hover{
+    background-color:#A79192;
+}
+
+.btnArea2{
+   
+    margin-top: 30px;
+}
+
+.btnArea2 a:hover{
+    color: #A79192;
+}
+
+.btnArea2 a,
+.btnArea2 span{
+    color: #CFC5C9;
+}
+
+.p-3{
+    background-color: #A79192
+}
+
+#btn2 svg{
+    height: 25px;
+}
+
+#btn3 svg{
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+}
+
+#btn1{
+    background-color: #786364;
+    color: white;
+}

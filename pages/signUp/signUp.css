@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+
+#loginForm{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    justify-content: start;
+    width: 100%;
+    margin: 0 auto;
+
+
+}
+
+#promotionContainer{
+    width: 600px;
+    margin: 30px auto;
+}
+
+#promotionContainer img{
+    width: 450px;
+
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+
+#loginBtnContainer{
+    width: 100%;
+}
+
+.btnArea1{
+    width: 510px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+.btn-outline-secondary{
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    margin: 5px;
+    height: 40px;
+    
+}
+
+.btn-outline-secondary:hover{
+    background-color:#A79192;
+}
+
+.btnArea2{
+   
+    margin-top: 30px;
+}
+
+.btnArea2 a:hover{
+    color: #A79192;
+}
+
+.btnArea2 a,
+.btnArea2 span{
+    color: #CFC5C9;
+}
+
+.p-3{
+    background-color: #A79192
+}
+
+#btn2 svg{
+    height: 25px;
+}
+
+#btn3 img{
+    width: auto; height: auto;
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+}
+
+#btn4{
+    background-color: #786364;
+    color: white;
+}

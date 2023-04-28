@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="myPage.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../header/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="bg-white">
+      <nav
+        class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
+        <div class="flex lg:flex-1">
+          <a href="#" class="font-semibold leading-6 text-xl text-gray-900">
+            HOTSIX
+          </a>
+        </div>
+        <div class="lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="../myPage/"
+            class="text-sm mr-3 font-semibold leading-6 text-gray-900"
+            >My page</a
+          >
+          <a
+            href="../productCart/"
+            class="text-sm mr-3 font-semibold leading-6 text-gray-900"
+            >Cart</a
+          >
+          <a
+            href="../loginPage/"
+            class="text-sm mr-3 font-semibold leading-6 text-gray-900"
+            >Log in</a
+          >
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="profileContainer">
+        <div class="userImg">
+          <img
+            class="userImgSvg"
+            src="../img/user-man-svgrepo-com.svg"
+            alt="유저 이미지"
+          />
+        </div>
+        <div>
+          <h2><span id="nameSpan"></span> 회원님<br />반갑습니다 🖐️</h2>
+        </div>
+      </div>
+
+      <div class="optionContainer">
+        <div class="userInfo">
+          <img
+            class="sampleImg"
+            src="../img/profile-round-1346-svgrepo-com.svg"
+            alt="이미지"
+          />
+          <div>개인 정보 변경</div>
+        </div>
+        <div class="userCart">
+          <img
+            class="sampleCart"
+            src="../img/cart-1167-svgrepo-com.svg"
+            alt="주문목록"
+          />
+          <div>주문 내역</div>
+        </div>
+        <div class="contact">
+          <img
+            class="sampleContact"
+            src="../img/call-192-svgrepo-com.svg"
+            alt="고객센터"
+          />
+          <div>고객센터</div>
+        </div>
+      </div>
+    </main>
+
+    <div class="userInfoForm">
+      <div class="mb-3">
+        <div>프로필 이미지</div>
+        <input class="form-control" type="file" id="formFile" />
+      </div>
+      <div class="mb-3">
+        <div>이름</div>
+        <input type="text" class="form-control" id="userName" disabled />
+      </div>
+      <div class="mb-3">
+        <div>이메일</div>
+        <input
+          type="email"
+          class="form-control"
+          id="userEmail"
+          placeholder="name@example.com"
+        />
+      </div>
+      <div class="mb-3">
+        <div>비밀번호</div>
+        <input type="password" class="form-control" id="userPassword" />
+      </div>
+      <div class="mb-3">
+        <div>주소</div>
+        <input type="text" class="form-control" id="userAddress" />
+      </div>
+      <div class="mb-3">
+        <div>전화번호</div>
+        <input
+          type="tel"
+          class="form-control m-input telInput"
+          name="tel"
+          id="userPhoneInput"
+          maxlength="13"
+          placeholder="예) 010-1234-5678"
+        />
+      </div>
+      <div class="text-center">
+        <button class="saveBtn btn btn-primary d-inline-flex">저장</button>
+      </div>
+    </div>
+
+    <div class="userCartForm">
+      <table class="table">
+        <thead>
+          <th scope="col">#</th>
+          <th scope="col">사진</th>
+          <th scope="col">상품 이름</th>
+          <th scope="col">수량</th>
+          <th scope="col">가격</th>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>사진</td>
+            <td>애플 스티커</td>
+            <td>2</td>
+            <td>1000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="contact">
+      <h2>근무시간 : 09 : 00 ~ 18 : 00</h2>
+      <h2>전화번호 : 02 - 1234 - 1234</h2>
+    </div>
+
+    <script src="myPage.js"></script>
+  </body>
+</html>
